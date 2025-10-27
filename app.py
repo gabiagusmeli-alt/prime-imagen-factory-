@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Procesador de Imágenes - PyQt6 Front")
+        self.setWindowTitle("Prime_imagen_factory")
         self.setMinimumSize(800, 1100)
 
         # --- Widgets principales ---

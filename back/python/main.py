@@ -2,6 +2,7 @@ from back.python.matriz_to_int import *
 from back.python.procesamiento_imagen import *
 from back.python.iteracion import *
 from ctypes import CDLL, c_char_p, c_int
+from back.python.comparacion import *
 import os
 
 # En PROYECTO_IMAGEN_PRIMO/python/main.py
@@ -17,23 +18,26 @@ lib_path = os.path.join(script_dir, "libprimo.so")
 # Cargar la librería usando la ruta construida
 lib_primalidad = CDLL(lib_path) # ✅ Correcto
 
-lib_primalidad.es_primo.argtypes = [c_char_p]
-lib_primalidad.es_primo.restype = c_int
+lib_primalidad.siguiente_primo_paralelo.argtypes = [c_char_p]
+lib_primalidad.siguiente_primo_paralelo.restype = c_char_p
 
-# ... (el resto de tu función main)
 
 # Procesar la imagen
 def main (imagen : str)-> str:
     matriz = tomar_imagen(imagen)
     matriz_intercambiada = matrix_to_integer(matriz)
 
-    prime = lib_primalidad.es_primo(matriz_intercambiada.encode('utf-8'))
-    iteracion = 0
+    prime = True
+    nuevo_primo = lib_primalidad.siguiente_primo_paralelo(matriz_intercambiada.encode('utf-8'))
 
     #par = (int(matriz_intercambiada)%2)
-    while prime not in (1, 2):
-        matriz_intercambiada = iterar(matriz_intercambiada)
-        prime = lib_primalidad.es_primo(matriz_intercambiada.encode('utf-8'))
+    while not prime :
+        prime = comparar(matriz_intercambiada,nuevo_primo)
+        if prime :
+            matriz_intercambiada = nuevo_primo
+        else :
+            nuevo_primo = lib_primalidad.siguiente_primo_paralelo(nuevo_primo.encode('utf-8'))
+
     return matriz_intercambiada
 
 

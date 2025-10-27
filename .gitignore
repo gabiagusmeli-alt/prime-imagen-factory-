@@ -1,0 +1,3 @@
+# Archivos y carpetas de Python generados
+__pycache__/
+*.pyc

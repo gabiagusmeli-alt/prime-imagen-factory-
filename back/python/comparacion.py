@@ -3,6 +3,7 @@ grupo_1 = [2, 4]
 grupo_2 = [3, 5, 9]
 grupo_3 = [0, 6, 8]
 grupo_impar = [1, 3, 5, 7, 9]
+#esta funcion solo toma dos str y se fija si los elementos en el indice i estan en en el mismo grupo y que el 25 porciento del numero cumola
 
 
 def comparar (first : str, second:str ) -> bool:

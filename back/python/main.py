@@ -5,7 +5,6 @@ from ctypes import CDLL, c_char_p, c_int
 from back.python.comparacion import *
 import os
 
-# En PROYECTO_IMAGEN_PRIMO/python/main.py
 
 
 # 1. Obtiene la ruta del directorio donde se encuentra este script (main.py)
@@ -30,7 +29,6 @@ def main (imagen : str)-> str:
     prime = True
     nuevo_primo = lib_primalidad.siguiente_primo_paralelo(matriz_intercambiada.encode('utf-8'))
 
-    #par = (int(matriz_intercambiada)%2)
     while not prime :
         prime = comparar(matriz_intercambiada,nuevo_primo)
         if prime :

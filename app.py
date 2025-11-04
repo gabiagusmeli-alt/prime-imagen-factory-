@@ -48,7 +48,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Prime_imagen_factory")
-        self.setMinimumSize(800, 1100)
+        self.setMinimumSize(500, 500)
 
         # --- Widgets principales ---
         self.image_label = QLabel("No se ha seleccionado una imagen")
